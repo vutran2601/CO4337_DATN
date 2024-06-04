@@ -1,0 +1,233 @@
+\documentclass[a4paper, 13pt]{report}
+\usepackage[utf8]{vietnam}
+\usepackage{fancybox}
+\usepackage{float}
+\usepackage{tabularray}
+\usepackage{fancyhdr}
+\usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
+\usepackage{wrapfig}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage[nopar]{lipsum}
+\usepackage{enumitem}
+\usepackage[format=plain, font=large, labelfont=bf,textfont=it]{caption}
+\setlist[itemize]{noitemsep, topsep=0pt}
+\usepackage{lastpage}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{makecell}
+\usepackage{tikz}
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.8}
+\usepackage[raster]{tcolorbox}
+\definecolor{swotS}{RGB}{46,110,187}
+\definecolor{swotW}{RGB}{239,167,58}
+\definecolor{swotO}{RGB}{112,193,61}
+\definecolor{swotT}{RGB}{110,62,197}
+\usepackage{etoolbox}
+\usepackage[bottom]{footmisc}
+\usepackage[backend=biber,sorting=none,style=ieee,url=false]{biblatex}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{soul}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage{pythonhighlight}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{arydshln}
+
+% Define column types with custom width
+\newcolumntype{Q}[2]{>{\raggedright\arraybackslash}p{#2}}
+
+\DefTblrTemplate{firsthead,middlehead,lasthead}{default}{}
+\DefTblrTemplate{lastfoot}{default}{
+  \UseTblrTemplate{caption}{default}
+}
+
+\DefTblrTemplate{caption-tag}{default}{\large\bf Bảng \thetable}
+\DefTblrTemplate{caption-sep}{default}{\large\bf : }
+\DefTblrTemplate{caption-text}{default}{\large\it\InsertTblrText{caption}}
+\DefTblrTemplate{contfoot-text}{normal}{}
+\SetTblrTemplate{contfoot-text}{normal}
+\DefTblrTemplate{conthead-text}{normal}{}
+\SetTblrTemplate{conthead-text}{normal}
+\DefTblrTemplate{capcont}{default}{}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+
+
+\addbibresource{references.bib}
+
+\fancypagestyle{fancy}{
+    \fancyhf{}
+    \fancyhead{} % clear all header fields
+    \fancyhead[L]{\large \MakeUppercase \chaptername{ }\thechapter}
+    \fancyhead[R]{\large \MakeUppercase \leftmark}
+    \fancyfoot{} % clear all footer fields
+    \fancyfoot[L]{\large Báo cáo đồ án tốt nghiệp (CO4337) - HK232}
+    \fancyfoot[R]{\large Trang {\thepage}/\pageref{LastPage}}
+    \renewcommand{\headrulewidth}{0.3pt}
+    \renewcommand{\footrulewidth}{0.3pt}
+}
+\fancypagestyle{myplain}{
+    \fancyhf{}
+    \fancyhead{}
+    \fancyfoot{}
+    \renewcommand{\headrulewidth}{0.3pt}
+    \renewcommand{\footrulewidth}{0.3pt}
+}
+
+\patchcmd{\chapter}{\thispagestyle{myplain}}{\thispagestyle{fancy}}{}{}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ -- #1}{}}
+
+\definecolor{myblue}{HTML}{0088FF}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{myblue}}
+  {\filleft%
+    \begin{tikzpicture}
+    \node[
+      outer sep=0pt,
+      text width=2.5cm,
+      minimum height=3cm,
+      fill=myblue,
+      font=\color{white}\fontsize{80}{90}\selectfont,
+      align=center
+      ] (num) {\thechapter};
+    \node[
+      rotate=90,
+      anchor=south,
+      font=\color{black}\Large\normalfont
+      ] at ([xshift=-5pt]num.west) {\textls[180]{\textsc{\chaptertitlename}}};  
+    \end{tikzpicture}%
+  }
+  {0pt}
+  {\titlerule[2.5pt]\vskip3pt\titlerule\vskip4pt\Huge\sffamily}
+
+% Section & subsection styling
+
+\titleformat{\section}[hang]{\LARGE\bfseries\sffamily}%
+{\rlap{\color{black}\rule[-6pt]{\textwidth}{1.2pt}}\colorbox{black}{%
+           \raisebox{0pt}[13pt][3pt]{ \makebox[60pt]{% height, width
+                \fontfamily{phv}\selectfont\color{white}{\thesection}}
+            }}}%
+{15pt}%
+{ \color{black}
+%
+}
+\titlespacing*{\section}{0pt}{3mm}{5mm}
+
+\titleformat{\subsection}[hang]{\Large\bfseries\sffamily}%
+{\colorbox{black}{%
+\raisebox{0pt}[13pt][3pt]{ \makebox[45pt]{% height, width
+    \fontfamily{phv}\selectfont\color{white}{\thesubsection}}
+}}}%
+{10pt}%
+{ \color{black}
+%
+}
+\titlespacing*{\subsection}{0pt}{1mm}{3mm}
+
+\titleformat{\subsubsection}[hang]{\large\bfseries\sffamily}%
+{\colorbox{black}{%
+\raisebox{0pt}[13pt][3pt]{ \makebox[30pt]{% height, width
+    \fontfamily{phv}\selectfont\color{white}{\thesubsubsection}}
+}}}%
+{5pt}%
+{ \color{black}
+%
+}
+\titlespacing*{\subsubsection}{0pt}{0mm}{1mm}
+
+% Footnote mark in text
+\deffootnotemark{\textsuperscript{[\thefootnotemark]}}
+
+\setlength\parindent{0pt}
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\renewcommand{\lstlistingname}{Đoạn mã}
+
+\fontsize{13pt}{13pt}\selectfont
+
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+\begin{document}
+\include{Bia}
+\large
+\pagenumbering{roman}
+\include{Section/.Additions/1. LoiCamDoan}
+\include{Section/.Additions/2. LoiCamOn}
+\include{Section/.Additions/3. TomTatDeTai} 
+\include{Section/.Additions/4. TomTatChuong}
+\renewcommand\contentsname{MỤC LỤC}
+\tableofcontents
+\renewcommand*\listfigurename{DANH SÁCH HÌNH VẼ} 
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\figurename~\oldnumberline}%
+\listoffigures%
+}
+\renewcommand*\listtablename{DANH SÁCH BẢNG}
+{%
+\let\oldnumberline\numberline%
+\renewcommand{\numberline}{\tablename~\oldnumberline}%
+\listoftables%
+}
+\pagestyle{fancy}
+\newpage
+\pagenumbering{arabic}
+\include{Section/1. Introduction/.index}
+\include{Section/2. Base Knownledge/.index}
+\include{Section/3. Related Systems/.index}
+\include{Section/4. Propose Solution/.index}
+\include{Section/5. Implementation/.index}
+\include{Section/6. Deployment/.index}
+\include{Section/7. Validation/.index}
+\include{Section/8. Conclusion/.index}
+\printbibliography[title=TÀI LIỆU THAM KHẢO]
+\addcontentsline{toc}{chapter}{TÀI LIỆU THAM KHẢO}
+\end{document}

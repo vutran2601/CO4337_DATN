@@ -1,0 +1,63 @@
+\chapter{KIỂM THỬ VÀ ĐÁNH GIÁ GIẢI PHÁP TÌM KIẾM}
+\section{Đánh giá thời gian tìm kiếm}
+ \hspace*{1cm}Thời gian tìm kiếm là một yếu tố quan trọng ảnh hưởng đến trải nghiệm người dùng khi sử dụng các công cụ tìm kiếm. Nó thể hiện tốc độ mà hệ thống có thể truy xuất và hiển thị kết quả tìm kiếm sau khi nhận được truy vấn của người dùng. Do đó, nhóm đã thực hiện đánh giá thời gian tìm kiếm của các phương pháp: tìm kiếm toàn văn bản, tìm kiếm ngữ nghĩa và tìm kiếm hybrid để có thể so sánh được độ hiệu quả của từng phương pháp.
+\begin{table}[H]
+    \centering
+        \caption{Thời gian tìm kiếm của phương pháp tìm kiếm toàn văn bản, tìm kiếm ngữ nghĩa và tìm kiếm hybrid}
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+        Query & Tìm kiếm toàn văn bản (s) & Tìm kiếm ngữ nghĩa (s) & \textbf{Tìm kiếm hybrid} (s) \\
+        \hline
+        \hline
+        Nhà gần công viên lê thị riêng & 0.0843 & 2.08 & 0.699 \\
+        Căn hộ Bách Khoa & 0.112 & 0.702 & 0.580 \\
+        Phòng trọ giá rẻ gần bến xe & 0.0744 & 0.610 & 0.585 \\
+        Nhà trọ có máy lạnh và wifi & 0.0612 & 1.16 & 0.8924 \\
+        Vinhomes central park & 0.115 & 0.8924 & 0.560  \\
+\hline
+    \end{tabular}
+    \label{tab:results_time}
+\end{table}
+
+\hspace*{1cm}Qua bảng \ref{tab:results_time}, ta có thể thấy được phương pháp tìm kiếm toàn văn bản có thời gian nhanh nhất do đây là phương pháp đơn giản nhất, tuy nhiên độ chính xác không được đảm bảo và có thể không tìm ra kết quả liên quan. Tìm kiếm ngữ nghĩa tuy sẽ có độ chính xác cao và tìm ra được các kết quả liên quan nhưng thời gian tìm kiếm tương đối chậm. Tìm kiếm hybrid là phương pháp cân bằng tốt nhất giữa tốc độ tìm kiếm và độ chính xác của kết quả do tận dụng ưu điểm và khắc phục được nhược điểm của 2 phương pháp trên.
+
+\section{Đánh giá độ chính xác}
+\hspace*{1cm}Đánh giá độ chính xác là một bước quan trọng trong việc đánh giá hiệu quả của mô hình tìm kiếm hybrid. Độ chính xác được thể hiện qua khả năng cung cấp kết quả tìm kiếm phù hợp với nhu cầu và mong muốn của người dùng. Để có thể đánh giá độ chính xác của mô hình tìm kiếm hybrid so với phương pháp tìm kiếm tìm kiếm ngữ nghĩa, nhóm sẽ sử dụng phương pháp đánh giá Accuracy dựa trên 40 kết quả đầu tiên. Ở đây, nhóm sẽ không đánh giá độ chính xác của phương pháp tìm kiếm toàn văn bản do kết quả luôn bao gồm những từ khóa có trong câu query.
+\begin{table}[H]
+    \centering
+        \caption{Kết quả đánh giá phương pháp tìm kiếm ngữ nghĩa và tìm kiếm hybrid dựa trên Accuracy}
+    \begin{tabular}{|l|c|c|}
+    \hline
+        Query &  Tìm kiếm ngữ nghĩa (\%) & \textbf{Tìm kiếm hybrid (\%)} \\
+        \hline
+        \hline
+        Nhà gần công viên lê thị riêng &  45 & 52.5 \\
+        Căn hộ Bách Khoa & 25 & 40 \\
+        Phòng trọ giá rẻ gần bến xe & 37.5 & 55 \\
+        Nhà trọ có máy lạnh và wifi & 87.5 & 100 \\
+        Vinhomes central park & 20 & 42.5 \\
+\hline
+    \end{tabular}
+    \label{tab:results_accuracy}
+\end{table}
+
+\hspace*{1cm}Qua bảng \ref{tab:results_accuracy}, ta có thể thấy được mô hình tìm kiếm hybrid cho ra kết quả chính xác hơn phương pháp tìm kiếm ngữ nghĩa do tận dụng được ưu điểm của phương pháp tìm kiếm toàn văn bản. Tuy nhiên, ta không chỉ đánh giá độ chính xác của mô hình tìm kiếm hybrid mà còn cần phải đánh giá mức độ liên quan của kết quả. Để có thể làm được điều đó, nhóm sử dụng phương pháp đánh giá Average Precision @ K (AP@K). AP@K giúp đo lường độ chính xác trung bình của các kết quả tìm kiếm được xếp hạng cao nhất, cụ thể là top K kết quả. Áp dụng vào việc đánh giá độ chính xác của mô hình tìm kiếm hybrid, nhóm sẽ tiến hành đánh giá AP@40 trên 40 kết quả xếp hạng cao nhất được trả về cho người dùng.
+\begin{table}[H]
+    \centering
+        \caption{Kết quả đánh giá phương pháp tìm kiếm ngữ nghĩa và tìm kiếm hybrid dựa trên Average Precision @40}
+    \begin{tabular}{|l|c|c|}
+    \hline
+        Query &  Tìm kiếm ngữ nghĩa & \textbf{Tìm kiếm hybrid} \\
+        \hline
+        \hline
+        Nhà gần công viên lê thị riêng &  0.7273 & 0.8093 \\
+        Căn hộ Bách Khoa & 0.5549 & 0.8074 \\
+        Phòng trọ giá rẻ gần bến xe & 0.679 & 0.8183 \\
+        Nhà trọ có máy lạnh và wifi & 0.9693 & 0.9929 \\
+        Vinhomes central park & 0.9952 & 0.9993 \\
+\hline
+    \end{tabular}
+    \label{tab:results_apk}
+\end{table}
+\hspace*{1cm}Qua bảng \ref{tab:results_apk}, ta thấy được mô hình tìm kiếm hybrid có thể trả về kết quả có độ liên quan cao hơn và kết quả được sắp xếp tốt hơn so với phương pháp tìm kiếm ngữ nghĩa. Như vậy, đánh giá trên đã minh chứng cho hiệu quả vượt trội của mô hình tìm kiếm hybrid so với phương pháp tìm kiếm toàn văn bản truyền thống hay tìm kiếm ngữ nghĩa. Mô hình hybrid không chỉ mang lại độ chính xác cao hơn mà còn cung cấp kết quả có độ liên quan tốt hơn, đáp ứng tốt hơn nhu cầu tìm kiếm của người dùng.
+\hspace*{1cm}

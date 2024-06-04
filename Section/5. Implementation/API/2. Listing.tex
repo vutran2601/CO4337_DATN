@@ -1,0 +1,396 @@
+\subsection{API cho các chức năng của Listing}
+\subsubsection{Create new listing}
+\begin{center}
+    \begin{longtblr}[caption={Create new listing}]{
+        rows = {bg = green!10!white},
+        vlines = {dashed, green!75!black},
+        hlines = {dashed, green!75!black},
+        hline{1-6,19} = {2pt, green!75!black},
+        vline{odd} = {2pt, green!75!black},
+        vline{even} = {5}{green!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{8-18}{3-4} = {bg = green!75!black}
+    }
+    \textit{Tên API:} \textbf{Create new listing}&&&\\
+    \textit{Endpoint:} \textbf{/listing} &&&\\
+    \textit{Method:} \textbf{POST} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    name & string & status & number\\
+    cost & number & message & string\\
+    area & number &&\\
+    numberOfBedrooms & number &&\\
+    numberOfToilets & number &&\\
+    streetNumber & string &&\\
+    city & string &&\\
+    district & string &&\\
+    ward & string &&\\
+    phoneContact & string &&\\
+    description & string &&\\
+    facilities & [RoomingHouseFacility] &&\\
+    images & [File] &&
+    \end{longtblr}
+\end{center}
+\subsubsection{Update listing}
+\begin{center}
+    \begin{longtblr}[caption={Update listing}]{
+        rows = {bg = yellow!10!white},
+        vlines = {dashed, yellow!75!black},
+        hlines = {dashed, yellow!75!black},
+        hline{1-6,19} = {2pt, yellow!75!black},
+        vline{odd} = {2pt, yellow!75!black},
+        vline{even} = {5}{yellow!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{8-18}{3-4} = {bg = yellow!75!black}
+    }
+    \textit{Tên API:} \textbf{Update listing}&&&\\
+    \textit{Endpoint:} \textbf{/listing\{id\}} &&&\\
+    \textit{Method:} \textbf{PATCH} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    name & string & status & number\\
+    cost & number & message & string\\
+    area & number &&\\
+    numberOfBedrooms & number &&\\
+    numberOfToilets & number &&\\
+    streetNumber & string &&\\
+    city & string &&\\
+    district & string &&\\
+    ward & string &&\\
+    phoneContact & string &&\\
+    description & string &&\\
+    facilities & [RoomingHouseFacility] &&\\
+    images & [File] &&
+    \end{longtblr}
+\end{center}
+\subsubsection{Delete listing}
+\begin{center}
+    \begin{longtblr}[caption={Delete listing}]{
+        rows = {bg = red!10!white},
+        vlines = {dashed, red!75!black},
+        hlines = {dashed, red!75!black},
+        hline{1-6,8} = {2pt, red!75!black},
+        vline{odd} = {2pt, red!75!black},
+        vline{even} = {5}{red!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{6-7}{1-2} = {bg = red!75!black}
+    }
+    \textit{Tên API:} \textbf{Delete listing}&&&\\
+    \textit{Endpoint:} \textbf{/listing\{id\}} &&&\\
+    \textit{Method:} \textbf{DELETE} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    && status & number\\
+    && message & string
+    \end{longtblr}
+\end{center}
+\subsubsection{Get listing detail}
+\begin{center}
+    \begin{longtblr}[caption={Get listing detail}]{
+        rows = {bg = cyan!10!white},
+        vlines = {dashed, cyan!75!black},
+        hlines = {dashed, cyan!75!black},
+        hline{1-6,26} = {2pt, cyan!75!black},
+        vline{odd} = {2pt, cyan!75!black},
+        vline{even} = {5}{cyan!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{6-25}{1-2} = {bg = cyan!75!black}
+    }
+    \textit{Tên API:} \textbf{Get listing detail}&&&\\
+    \textit{Endpoint:} \textbf{/listing\{id\}} &&&\\
+    \textit{Method:} \textbf{GET} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    && id & number \\
+    && name & string \\
+    && cost & string \\
+    && type & string \\
+    && createAt & string \\
+    && area & number \\
+    && numberOfBedrooms & string \\
+    && numberOfToilets & string \\
+    && streetNumber & string \\
+    && city & \{code: string, fullName: string\} \\
+    && district & \{code: string, fullName: string\} \\
+    && ward & \{code: string, fullName: string\} \\
+    && description & number \\
+    && imageUrls & [string] \\
+    && facilities & [RoomingHouseFacility]\\
+    && averageRating & number \\
+    && phoneContact & string \\
+    && landlordAccountId & number \\
+    && landlordName & string \\
+    && landlordAvatar & string
+    \end{longtblr}
+\end{center}
+\subsubsection{Get own listings}
+\begin{center}
+    \begin{longtblr}[caption={Get own listings}]{
+        rows = {bg = cyan!10!white},
+        vlines = {dashed, cyan!75!black},
+        hlines = {dashed, cyan!75!black},
+        hline{1-6,27} = {2pt, cyan!75!black},
+        vline{odd} = {2pt, cyan!75!black},
+        vline{even} = {5}{cyan!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{8-26}{1-2} = {bg = cyan!75!black}
+    }
+    \textit{Tên API:} \textbf{Get own listings}&&&\\
+    \textit{Endpoint:} \textbf{/listing/owned} &&&\\
+    \textit{Method:} \textbf{GET} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    limit & number & id & number \\
+    offset & number & name & string \\
+    && cost & string \\
+    && type & string \\
+    && createAt & string \\
+    && area & number \\
+    && numberOfBedrooms & string \\
+    && numberOfToilets & string \\
+    && streetNumber & string \\
+    && city & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && district & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && ward & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && description & number \\
+    && imageUrls & [string] \\
+    && facilities & [RoomingHouseFacility]\\
+    && averageRating & number \\
+    && phoneContact & string \\
+    && landlordAccountId & number \\
+    && landlordName & string \\
+    && landlordAvatar & string \\
+    && total & number
+    \end{longtblr}
+\end{center}
+\subsubsection{Get best rated}
+\begin{center}
+    \begin{longtblr}[caption={Get best rated}]{
+        rows = {bg = cyan!10!white},
+        vlines = {dashed, cyan!75!black},
+        hlines = {dashed, cyan!75!black},
+        hline{1-6,27} = {2pt, cyan!75!black},
+        vline{odd} = {2pt, cyan!75!black},
+        vline{even} = {5}{cyan!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{8-26}{1-2} = {bg = cyan!75!black}
+    }
+    \textit{Tên API:} \textbf{Get best rated}&&&\\
+    \textit{Endpoint:} \textbf{/listing/best-rated} &&&\\
+    \textit{Method:} \textbf{GET} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    limit & number & id & number \\
+    offset & number & name & string \\
+    && cost & string \\
+    && type & string \\
+    && createAt & string \\
+    && area & number \\
+    && numberOfBedrooms & string \\
+    && numberOfToilets & string \\
+    && streetNumber & string \\
+    && city & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && district & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && ward & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && description & number \\
+    && imageUrls & [string] \\
+    && facilities & [RoomingHouseFacility]\\
+    && averageRating & number \\
+    && phoneContact & string \\
+    && landlordAccountId & number \\
+    && landlordName & string \\
+    && landlordAvatar & string \\
+    && total & number
+    \end{longtblr}
+\end{center}
+\subsubsection{Get recently posted}
+\begin{center}
+    \begin{longtblr}[caption={Get recently posted}]{
+        rows = {bg = cyan!10!white},
+        vlines = {dashed, cyan!75!black},
+        hlines = {dashed, cyan!75!black},
+        hline{1-6,27} = {2pt, cyan!75!black},
+        vline{odd} = {2pt, cyan!75!black},
+        vline{even} = {5}{cyan!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{8-26}{1-2} = {bg = cyan!75!black}
+    }
+    \textit{Tên API:} \textbf{Get recently posted}&&&\\
+    \textit{Endpoint:} \textbf{/listing/recently-posted} &&&\\
+    \textit{Method:} \textbf{GET} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    limit & number & id & number \\
+    offset & number & name & string \\
+    && cost & string \\
+    && type & string \\
+    && createAt & string \\
+    && area & number \\
+    && numberOfBedrooms & string \\
+    && numberOfToilets & string \\
+    && streetNumber & string \\
+    && city & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && district & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && ward & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && description & number \\
+    && imageUrls & [string] \\
+    && facilities & [RoomingHouseFacility]\\
+    && averageRating & number \\
+    && phoneContact & string \\
+    && landlordAccountId & number \\
+    && landlordName & string \\
+    && landlordAvatar & string \\
+    && total & number
+    \end{longtblr}
+\end{center}
+\subsubsection{Get search}
+\begin{center}
+    \begin{longtblr}[caption={Get search}]{
+        rows = {bg = cyan!10!white},
+        vlines = {dashed, cyan!75!black},
+        hlines = {dashed, cyan!75!black},
+        hline{1-6,27} = {2pt, cyan!75!black},
+        vline{odd} = {2pt, cyan!75!black},
+        vline{even} = {5}{cyan!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{9-26}{1-2} = {bg = cyan!75!black}
+    }
+    \textit{Tên API:} \textbf{Get search}&&&\\
+    \textit{Endpoint:} \textbf{/listing/search} &&&\\
+    \textit{Method:} \textbf{GET} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    query & string & id & number \\
+    limit & number & name & string \\
+    offset & number & cost & string \\
+    && type & string \\
+    && createAt & string \\
+    && area & number \\
+    && numberOfBedrooms & string \\
+    && numberOfToilets & string \\
+    && streetNumber & string \\
+    && city & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && district & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && ward & {\{\\
+            \hspace*{1cm}code: string,\\
+            \hspace*{1cm}fullName: string\\
+            \}} \\
+    && description & number \\
+    && imageUrls & [string] \\
+    && facilities & [RoomingHouseFacility]\\
+    && averageRating & number \\
+    && phoneContact & string \\
+    && landlordAccountId & number \\
+    && landlordName & string \\
+    && landlordAvatar & string \\
+    && total & number
+    \end{longtblr}
+\end{center}
+\subsubsection{Get filtered}
+\begin{center}
+    \begin{longtblr}[caption={Get filtered}]{
+        rows = {bg = cyan!10!white},
+        vlines = {dashed, cyan!75!black},
+        hlines = {dashed, cyan!75!black},
+        hline{1-6,27} = {2pt, cyan!75!black},
+        vline{odd} = {2pt, cyan!75!black},
+        vline{even} = {5}{cyan!75!black},
+        cell{1-3}{1} = {c = 4}{halign = l},
+        cell{4}{1,3} = {c = 2}{halign = c},
+        row{5} = {halign = c},
+        cell{21-26}{1-2} = {bg = cyan!75!black}
+    }
+    \textit{Tên API:} \textbf{Get filtered}&&&\\
+    \textit{Endpoint:} \textbf{/listing/filtered} &&&\\
+    \textit{Method:} \textbf{GET} &&&\\
+    \textbf{Request} && \textbf{Response} &\\
+    \textit{\textbf{Field}} & \textit{\textbf{Type}} & \textit{\textbf{Field}} & \textit{\textbf{Type}} \\
+    type & RoomingHouseType & id & number \\
+    minCost & number & name & string \\
+    maxCost & number & cost & string \\
+    minArea & number & type & string \\
+    maxArea & number & createAt & string \\
+    minNoB\textsuperscript{1} & number & area & number \\
+    maxNoB\textsuperscript{2} & number & numberOfBedrooms & string \\
+    minNoT\textsuperscript{3} & number & numberOfToilets & string \\
+    maxNoT\textsuperscript{4} & number & streetNumber & string \\
+    cityCode & string & city & {\{\\
+                                \hspace*{1cm}code: string,\\
+                                \hspace*{1cm}fullName: string\\
+                                \}} \\
+    districtCode & string & district & {\{\\
+                                        \hspace*{1cm}code: string,\\
+                                        \hspace*{1cm}fullName: string\\
+                                        \}} \\
+    wardCode & string & ward & {\{\\
+                                \hspace*{1cm}code: string,\\
+                                \hspace*{1cm}fullName: string\\
+                                \}} \\
+    facilities & [RoomingHouseFacility] & description & number \\
+    minAR\textsuperscript{5} & number & imageUrls & [string] \\
+    maxAR\textsuperscript{6} & number & facilities & [RoomingHouseFacility]\\
+    && averageRating & number \\
+    && phoneContact & string \\
+    && landlordAccountId & number \\
+    && landlordName & string \\
+    && landlordAvatar & string \\
+    && total & number
+    \end{longtblr}
+\end{center}
+\rule{6cm}{0.2mm} \\
+\textsuperscript{1} : minNumberOfBedrooms \\
+\textsuperscript{2} : maxNumberOfBedrooms \\
+\textsuperscript{3} : minNumberOfToilets \\
+\textsuperscript{4} : maxNumberOfToilets \\
+\textsuperscript{5} : minAverageRating \\
+\textsuperscript{6} : maxAverageRating \\
+\rule{6cm}{0.2mm}
